@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Traffic Signal Control System for Ambulance</title>
+
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Leaflet map CSS -->
+    <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <!-- Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- WebSocket libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+    <!-- Header -->
+    <header class="navbar">
+        <h1>Smart Traffic Signal Control System</h1>
+
+        <div class="nav-right">
+            <div id="system-status">System: Online</div>
+            <div id="connection-status">WS: Connecting...</div>
+            <div id="datetime">--:--:--</div>
+        </div>
+    </header>
+
+    <main class="main-content">
+
+        <!-- Summary cards -->
+        <section class="summary-cards">
+
+            <div class="card">
+                <h3>Total Ambulances</h3>
+                <p id="total-ambulances">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Active Emergencies</h3>
+                <p id="active-emergencies">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Active Signal Priorities</h3>
+                <p id="active-priorities">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Completed Journeys</h3>
+                <p id="completed-journeys">0</p>
+            </div>
+
+        </section>
+
+        <!-- Map and monitoring panels -->
+        <section class="map-panels">
+
+            <!-- Map -->
+            <section class="map-container">
+                <div
+                        id="map"
+                        class="map"
+                        aria-label="Ambulance tracking map"
+                ></div>
+            </section>
+
+            <!-- Monitoring panels -->
+            <aside class="right-panels">
+
+                <section class="panel">
+                    <h2>Ambulance Monitoring</h2>
+
+                    <div
+                            id="ambulance-panels"
+                            class="panel-content"
+                    >
+                        <p class="loading-message">
+                            Loading ambulance information...
+                        </p>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <h2>Traffic Signal Status</h2>
+
+                    <div
+                            id="signal-panels"
+                            class="panel-content"
+                    >
+                        <p class="loading-message">
+                            Loading traffic signal information...
+                        </p>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <h2>System Activity Log</h2>
+
+                    <div
+                            id="event-log"
+                            class="event-log"
+                            aria-live="polite"
+                    ></div>
+                </section>
+
+            </aside>
+        </section>
+
+    </main>
+</div>
+
+<!-- Dashboard JavaScript -->
+<script src="/js/dashboard.js"></script>
+
+</body>
+</html>
